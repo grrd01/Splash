@@ -1,28 +1,54 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <section class="section">
+            <div class="container">
+                <div class="tile is-ancestor">
+                    <div class="tile is-vertical is-12">
+                        <div class="tile">
+                            <TitleTile :value="value" :test="test" :checkbox="checkbox" @interface="updateCheckbox" @updateTest="updateTest"/>
+                            <ThermometerTile :value="value" :test="test" :checkbox="checkbox"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TitleTile from './components/TitleTile.vue'
+import ThermometerTile from './components/ThermometerTile.vue'
+import axios from "axios";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: 'App',
+    components: {
+        TitleTile,
+        ThermometerTile
+    },
+    data: function () {
+        return {
+            test: 20,
+            value: 10,
+            checkbox: true
+        }
+    },
+    methods: {
+        updateCheckbox: function (event) {
+            this.checkbox = event
+        },
+        updateTest: function (event) {
+            this.test = event
+        }
+    },
+    mounted () {
+        axios
+            .get('https://www.wiewarm.ch:443/api/v1/temperature.json/17')
+            .then(response => (this.value = parseFloat(response.data['52']['temp'])))
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

@@ -6,7 +6,7 @@
   "default_locale": "en",
   "icons": [
     {
-      "src": "../images/icon_256.png",
+      "src": "/img/icons/google-touch-icon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"

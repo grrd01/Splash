@@ -8,10 +8,10 @@
             <p class="title">{{ temp }}</p>
             <p class="subtitle">Test: {{ test }}</p>
             <b-field label="Test-Wert">
-                <b-input v-model.number="myTest" type="number" step="0.1"></b-input>
+                <b-input v-model.number="myTest" type="number" step="0.1" aria-label="Test-Wert"></b-input>
             </b-field>
             <b-field label="Slider">
-                <b-slider v-model="myTest" :min="-10" :max="40" :step="0.1" @input="myTestChange($event)"></b-slider>
+                <b-slider v-model="myTest" :min="-10" :max="40" :step="0.1" @input="myTestChange($event)" aria-label="slider"></b-slider>
             </b-field>
             <b-checkbox v-model="myCheckbox"  @change.native="myCheckboxChange($event)">
                 Test-Wert verwenden
@@ -53,5 +53,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+    .is-warning {
+        background-color: #7986CB !important;
+        color: #000 !important;
+    }
+    .is-primary {
+        background-color: #303F9F !important;
+    }
+    b-field {
+        color: #000 !important;
+    }
+    b-slider {
+        background: #303F9F!important;
+    }
 </style>

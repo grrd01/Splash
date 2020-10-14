@@ -129,4 +129,7 @@ export default {
 <style scoped>
     #term {height: 80vh; fill: none; stroke: white; stroke-width: 3.8; stroke-linejoin: round; stroke-linecap: round;}
     .small { font: bold 13px sans-serif; fill: white; stroke: none }
+    .is-info {
+        background-color: #3F51B5 !important;
+    }
 </style>

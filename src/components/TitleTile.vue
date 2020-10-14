@@ -5,12 +5,12 @@
             <p class="subtitle">Marzili Bern</p>
         </article>
         <article class="tile is-child notification is-warning">
-            <p class="title">{{ value }}</p>
+            <p class="title">{{ temp }}</p>
             <p class="subtitle">Test: {{ test }}</p>
             <b-field label="Test-Wert">
                 <b-input v-model.number="myTest" type="number" step="0.1"></b-input>
             </b-field>
-            <b-field label="Simple">
+            <b-field label="Slider">
                 <b-slider v-model="myTest" :min="-10" :max="40" :step="0.1" @input="myTestChange($event)"></b-slider>
             </b-field>
             <b-checkbox v-model="myCheckbox"  @change.native="myCheckboxChange($event)">
@@ -31,7 +31,7 @@ export default {
     },
     props: {
         msg: String,
-        value: Number,
+        temp: Number,
         test: Number,
         checkbox: Boolean
     },

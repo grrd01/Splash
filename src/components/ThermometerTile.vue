@@ -1,8 +1,8 @@
 <template>
-  <div class="tile is-parent">
+  <div class="tile is-parent is-4">
       <article class="tile is-child notification is-info">
-          <p class="title">Thermometer</p>
-          <p class="subtitle">Inline-SVG</p>
+          <p class="title">{{term}}</p>
+          <p class="subtitle">{{datum}}</p>
           <figure class="image">
               <svg id="term" viewBox="0 0 75 250">
                   <rect x="18.7" :y="term_top" rx="5" ry="5" width="13" :height="term_height"
@@ -86,35 +86,42 @@
 
 <script>
 export default {
-  name: 'thermometer',
-  props: {
-    msg: String,
-    value: Number,
-    test: Number,
-    checkbox: Boolean
-  },
-  data: function () {
-      return {
-        dummy: 0
-      }
+    name: 'thermometer',
+    props: {
+        temp: Number,
+        datum: String,
+        test: Number,
+        checkbox: Boolean
     },
-  computed: {
-          term_top() {
-              if (this.checkbox) {
-                  return (155 - 4.5 * this.test);
-              } else {
-                  return (155 - 4.5 * this.value);
-              }
-          },
-          term_height() {
-              if (this.checkbox) {
-                  return (220 - (155 - 4.5 * this.test));
-              } else {
-                  return (220 - (155 - 4.5 * this.value));
-              }
-
+    data: function () {
+        return {
+            dummy: 0
+        }
+    },
+    computed: {
+      term() {
+          if (this.checkbox) {
+              return (this.test);
+          } else {
+              return (this.temp);
           }
+      },
+      term_top() {
+          if (this.checkbox) {
+              return (155 - 4.5 * this.test);
+          } else {
+              return (155 - 4.5 * this.temp);
+          }
+      },
+      term_height() {
+          if (this.checkbox) {
+              return (220 - (155 - 4.5 * this.test));
+          } else {
+              return (220 - (155 - 4.5 * this.temp));
+          }
+
       }
+    }
 }
 </script>
 

@@ -1,0 +1,33 @@
+{
+  "name": "grrd's Aare",
+  "short_name": "Aare",
+  "version": "1.0",
+  "description": "grrd’s Aare shows the temperature of the beautyful river Aare in Bern, Switzerland.",
+  "default_locale": "en",
+  "icons": [
+    {
+      "src": "../images/icon_256.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "../images/screenshots/grrdsaare1.png",
+      "type": "image/png",
+      "sizes": "750x1334"
+    },
+    {
+      "src": "../images/screenshots/grrdsaare2.png",
+      "type": "image/png",
+      "sizes": "750x1334"
+    }
+  ],
+  "categories": ["weather", "water", "swimming", "aare"],
+  "background_color": "#3F51B5",
+  "theme_color": "#3F51B5",
+  "display": "standalone",
+  "start_url": "../index.html",
+  "author": "Gerard Tyedmers"
+}

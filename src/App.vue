@@ -28,9 +28,9 @@ export default {
     },
     data: function () {
         return {
-            test: 20,
+            test: 0,
             value: 10,
-            checkbox: true
+            checkbox: false
         }
     },
     methods: {

@@ -1,8 +1,8 @@
 <template>
-    <div class="tile is-parent is-vertical">
+    <div class="tile is-child is-vertical">
         <article class="tile is-child notification is-primary">
-            <p class="title">Aare</p>
-            <p class="subtitle">Marzili Bern</p>
+            <p class="title">{{ bad }}</p>
+            <p class="subtitle">{{ becken }}</p>
         </article>
         <article class="tile is-child notification is-warning">
             <p class="title">{{ temp }}</p>
@@ -30,7 +30,8 @@ export default {
         }
     },
     props: {
-        msg: String,
+        bad: String,
+        becken: String,
         temp: Number,
         test: Number,
         checkbox: Boolean
@@ -38,7 +39,7 @@ export default {
     methods: {
         // maybe onchagne may onclick whatever..
         myCheckboxChange: function () {
-            this.$emit('interface', this.myCheckbox) // handle data and give it back to parent by interface
+            this.$emit('updateCheckbox', this.myCheckbox) // handle data and give it back to parent by interface
         },
         myTestChange: function () {
             this.$emit('updateTest', this.myTest) // handle data and give it back to parent by interface

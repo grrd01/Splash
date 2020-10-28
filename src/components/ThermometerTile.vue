@@ -1,8 +1,8 @@
 <template>
   <div class="tile is-parent is-4">
       <article class="tile is-child notification is-info">
-          <p class="title">{{term}}</p>
-          <p class="subtitle">{{datum}}</p>
+          <p class="title">{{term}}&deg;</p>
+          <p class="subtitle">{{datum_string}}</p>
           <figure class="image">
               <svg id="term" viewBox="0 0 75 250">
                   <rect x="18.7" :y="term_top" rx="5" ry="5" width="13" :height="term_height"
@@ -120,6 +120,13 @@ export default {
               return (220 - (155 - 4.5 * this.temp));
           }
 
+      },
+      datum_string() {
+        if (new Date(Date.parse(this.datum)) !== "Invalid Date" && !isNaN(new Date(Date.parse(this.datum)))) {
+          return (new Date(Date.parse(this.datum))).toLocaleDateString('de-CH',{ day: '2-digit', month: '2-digit',year: 'numeric', hour: '2-digit', minute: '2-digit'  })
+        } else {
+          return this.datum;
+        }
       }
     }
 }

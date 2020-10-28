@@ -1,4 +1,4 @@
-# aare
+# grrd's Splash!
 
 ## Project setup
 ```

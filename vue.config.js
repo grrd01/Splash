@@ -1,7 +1,7 @@
 module.exports = {
     publicPath: '/Aare_V2/aare/dist/',
     pwa: {
-        name: 'Aare',
+        name: "grrd's Splash!",
         appleMobileWebAppCapable: 'yes',
         iconPaths: {
             favicon32: '/img/icons/icon.svg',
@@ -13,7 +13,7 @@ module.exports = {
     },
     chainWebpack: config => {
         config.plugin('html').tap(args => {
-            args[0].title = 'Aare';
+            args[0].title = 'Splash!';
             return args;
         });
     }

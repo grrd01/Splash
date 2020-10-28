@@ -1,8 +1,8 @@
 {
-  "name": "grrd's Aare",
-  "short_name": "Aare",
+  "name": "grrd's Splash!",
+  "short_name": "Splash!",
   "version": "1.0",
-  "description": "grrd’s Aare shows the temperature of the beautyful river Aare in Bern, Switzerland.",
+  "description": "grrd’s Splash! zeigt die Temperatur von Gewässern und Bädern in der Schweiz.",
   "default_locale": "en",
   "icons": [
     {

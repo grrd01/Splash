@@ -55,7 +55,7 @@ export default {
             this.bad = this.badObject.bad
             this.becken = this.badObject.becken
             this.temp = parseFloat(this.badObject.temp)
-            this.datum = (new Date(Date.parse(this.badObject.date))).toLocaleDateString('de-CH',{ day: '2-digit', month: '2-digit',year: 'numeric', hour: '2-digit', minute: '2-digit'  })
+            this.datum = this.badObject.date
         }
     },
     mounted () {

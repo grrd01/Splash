@@ -1,10 +1,10 @@
 <template>
     <article class="tile is-child notification is-warning">
-      <div class="columns">
+      <div class="columns mb-0">
         <div class="column is-narrow">
           <b-field
               label="Kanton">
-            <b-select placeholder="" expanded v-model="kanton">
+            <b-select placeholder="" expanded v-model="kanton" @input="kantonChange($event)">
               <option v-for="kanton in listKanton" v-bind:key="kanton">
                 {{ kanton }}
               </option>
@@ -14,7 +14,7 @@
         <div class="column">
           <b-field
               label="Ort">
-            <b-select placeholder="" expanded v-model="ort">
+            <b-select placeholder="" expanded v-model="ort" @input="ortChange($event)">
               <option v-for="ort in listOrt" v-bind:key="ort">
                 {{ ort }}
               </option>
@@ -23,12 +23,9 @@
         </div>
       </div>
 
-
-
-
       <b-field
           label="Bad">
-        <b-select placeholder="" expanded v-model="bad">
+        <b-select placeholder="" expanded v-model="bad" @input="badChange($event)">
           <option v-for="bad in listBad" v-bind:key="bad">
             {{ bad }}
           </option>
@@ -63,6 +60,27 @@ export default {
   },
   methods: {
     // onchange, onclick ...
+    kantonChange: function () {
+      if (this.ort && !this.listOrt.includes(this.ort)) {
+        console.log("ungültiger Ort");
+        this.ort = undefined;
+      }
+      this.beckenChange()
+    },
+    ortChange: function () {
+      if (this.bad && !this.listBad.includes(this.bad)) {
+        console.log("ungültiges Bad");
+        this.bad = undefined;
+      }
+      this.beckenChange()
+    },
+    badChange: function () {
+      if (this.becken && !this.listBecken.includes(this.becken)) {
+        console.log("ungültiges Becken");
+        this.becken = undefined;
+      }
+      this.beckenChange()
+    },
     beckenChange: function () {
       let newArray = this.all_current.filter(item => (
           (item.kanton === this.kanton || this.kanton === undefined)
@@ -70,7 +88,20 @@ export default {
           && (item.bad === this.bad || this.bad === undefined)
           && (item.becken === this.becken || this.becken === undefined)
       ));
-      this.$emit('updateBecken', newArray[0]) // handle data and give it back to parent by interface
+      if (newArray.length === 1) {
+        this.kanton = newArray[0].kanton
+        this.ort = newArray[0].ort
+        this.bad = newArray[0].bad
+        this.becken = newArray[0].becken
+        this.$emit('updateBecken', newArray[0]) // handle data and give it back to parent by interface
+      } else {
+        this.$emit('updateBecken', {
+          bad: "kein Bad ausgewählt",
+          becken: "kein Becken ausgewählt",
+          temp: 0,
+          datum: "kein Bad ausgewählt"
+        }) // handle data and give it back to parent by interface
+      }
     }
   },
   computed: {
@@ -85,10 +116,6 @@ export default {
               .map(item => item.ort)
               .sort()
       )];
-      if (!newArray.includes(this.ort)) {
-        console.log("ungültiger Ort");
-        //this.ort = undefined;
-      }
       return (newArray);
     },
     listBad() {
@@ -106,7 +133,7 @@ export default {
           && (item.ort === this.ort || this.ort === undefined)
           && (item.bad === this.bad || this.bad === undefined)
       ));
-      return ([...new Set(newArray.map(item => item.becken))]);
+      return ([...new Set(newArray.map(item => item.becken))].sort());
     }
   }
 }
@@ -118,7 +145,7 @@ export default {
   background-color: #7986CB !important;
   color: #fff !important;
 }
-label {
+/deep/ .label {
   color: #fff !important;
 }
 </style>

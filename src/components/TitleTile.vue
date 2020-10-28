@@ -5,8 +5,8 @@
             <p class="subtitle">{{ becken }}</p>
         </article>
         <article class="tile is-child notification is-warning">
-            <p class="title">{{ temp }}</p>
-            <p class="subtitle">Test: {{ test }}</p>
+            <p class="title">{{ temp }}&deg;</p>
+            <p class="subtitle">Test: {{ test }}&deg;</p>
             <b-field label="Test-Wert">
                 <b-input v-model.number="myTest" type="number" step="0.1" aria-label="Test-Wert"></b-input>
             </b-field>
@@ -54,6 +54,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .title, .subtitle, /deep/ .label, /deep/ .control-label {
+      color: #fff !important;
+    }
     .is-warning {
         background-color: #7986CB !important;
         color: #000 !important;
@@ -61,10 +64,18 @@ export default {
     .is-primary {
         background-color: #303F9F !important;
     }
-    b-field {
-        color: #000 !important;
-    }
-    b-slider {
+    /deep/ .b-slider.is-primary .b-slider-fill {
         background: #303F9F!important;
     }
+    /deep/ .b-checkbox.checkbox input[type=checkbox] + .check {
+      border: 2px solid white;
+    }
+    /deep/ .b-checkbox.checkbox input[type=checkbox]:active + .check {
+      border: 2px solid #303F9F;
+    }
+    /deep/ .b-checkbox.checkbox input[type=checkbox]:checked + .check {
+      background: #303F9F url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Cpath style='fill:%23fff' d='M 0.04038059,0.6267767 0.14644661,0.52071068 0.42928932,0.80355339 0.3232233,0.90961941 z M 0.21715729,0.80355339 0.85355339,0.16715729 0.95961941,0.2732233 0.3232233,0.90961941 z'%3E%3C/path%3E%3C/svg%3E") no-repeat center center;
+      border-color: white;
+    }
+
 </style>

@@ -51,11 +51,15 @@ export default {
             this.test = event
         },
         updateBecken: function (event) {
-            this.badObject = event
-            this.bad = this.badObject.bad
-            this.becken = this.badObject.becken
-            this.temp = parseFloat(this.badObject.temp)
-            this.datum = this.badObject.date
+          this.badObject = event
+          this.bad = this.badObject.bad
+          this.becken = this.badObject.becken
+          this.temp = parseFloat(this.badObject.temp)
+          this.datum = this.badObject.date
+          localStorage.bad = this.bad;
+          localStorage.becken = this.becken;
+          localStorage.temp = this.temp;
+          localStorage.datum = this.datum;
         }
     },
     mounted () {
@@ -68,11 +72,23 @@ export default {
             })
 
        */
-        axios
-            .get('https://www.wiewarm.ch:443/api/v1/temperature/all_current.json/0')
-            .then((response) => {
-                this.all_current = response.data
-            })
+      if (localStorage.bad) {
+        this.bad = localStorage.bad;
+      }
+      if (localStorage.becken) {
+        this.becken = localStorage.becken;
+      }
+      if (localStorage.temp) {
+        this.temp = parseFloat(localStorage.temp);
+      }
+      if (localStorage.datum) {
+        this.datum = localStorage.datum;
+      }
+      axios
+        .get('https://www.wiewarm.ch:443/api/v1/temperature/all_current.json/0')
+        .then((response) => {
+            this.all_current = response.data
+        })
     }
 }
 </script>

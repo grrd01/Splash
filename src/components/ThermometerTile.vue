@@ -134,7 +134,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    #term {height: 80vh; fill: none; stroke: white; stroke-width: 3.8; stroke-linejoin: round; stroke-linecap: round;}
+    #term {
+      height: 80vh;
+      fill: none;
+      stroke: white;
+      stroke-width: 3.8;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      max-width: 100%;
+    }
     .small { font: bold 13px sans-serif; fill: white; stroke: none }
     .is-info {
         background-color: #3F51B5 !important;

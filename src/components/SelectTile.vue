@@ -93,6 +93,10 @@ export default {
         this.ort = newArray[0].ort
         this.bad = newArray[0].bad
         this.becken = newArray[0].becken
+        localStorage.kanton = this.kanton
+        localStorage.ort = this.ort
+        localStorage.bad = this.bad
+        localStorage.becken = this.becken
         this.$emit('updateBecken', newArray[0]) // handle data and give it back to parent by interface
       } else {
         this.$emit('updateBecken', {
@@ -134,6 +138,20 @@ export default {
           && (item.bad === this.bad || this.bad === undefined)
       ));
       return ([...new Set(newArray.map(item => item.becken))].sort());
+    }
+  },
+  mounted () {
+    if (localStorage.kanton) {
+      this.kanton = localStorage.kanton;
+    }
+    if (localStorage.ort) {
+      this.ort = localStorage.ort;
+    }
+    if (localStorage.bad) {
+      this.bad = localStorage.bad;
+    }
+    if (localStorage.becken) {
+      this.becken = localStorage.becken;
     }
   }
 }

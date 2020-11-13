@@ -132,7 +132,7 @@ export default {
           bad: "kein Bad ausgewählt",
           becken: "kein Becken ausgewählt",
           temp: 0,
-          datum: "kein Bad ausgewählt"
+          date: "kein Bad ausgewählt"
         }) // handle data and give it back to parent by interface
       }
     }

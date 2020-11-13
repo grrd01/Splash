@@ -1,9 +1,46 @@
 <template>
-    <article class="tile is-child notification is-warning">
+  <b-collapse :open="false" animation="slide" aria-id="contentIdForA11y1" v-model="isOpen">
+    <article id="select-small" class="tile is-child notification is-warning is-hidden">
       <div class="columns mb-0">
         <div class="column is-narrow">
-          <b-field
-              label="Kanton">
+          <b-field label="">
+            <b-select size="is-small" placeholder="Kanton" expanded v-model="kanton" @input="kantonChange($event)">
+              <option v-for="kanton in listKanton" v-bind:key="kanton">
+                {{ kanton }}
+              </option>
+            </b-select>
+          </b-field>
+        </div>
+        <div class="column">
+          <b-field label="">
+            <b-select size="is-small" placeholder="Ort" expanded v-model="ort" @input="ortChange($event)">
+              <option v-for="ort in listOrt" v-bind:key="ort">
+                {{ ort }}
+              </option>
+            </b-select>
+          </b-field>
+        </div>
+      </div>
+      <b-field label="">
+        <b-select size="is-small" placeholder="Bad" expanded v-model="bad" @input="badChange($event)">
+          <option v-for="bad in listBad" v-bind:key="bad">
+            {{ bad }}
+          </option>
+        </b-select>
+      </b-field>
+      <b-field label="">
+        <b-select size="is-small" placeholder="Becken" expanded v-model="becken" @input="beckenChange($event)">
+          <option v-for="becken in listBecken" v-bind:key="becken">
+            {{ becken }}
+          </option>
+        </b-select>
+      </b-field>
+    </article>
+
+    <article id="select-big" class="tile is-child notification is-warning ">
+      <div class="columns mb-0">
+        <div class="column is-narrow">
+          <b-field label="Kanton">
             <b-select placeholder="" expanded v-model="kanton" @input="kantonChange($event)">
               <option v-for="kanton in listKanton" v-bind:key="kanton">
                 {{ kanton }}
@@ -12,8 +49,7 @@
           </b-field>
         </div>
         <div class="column">
-          <b-field
-              label="Ort">
+          <b-field label="Ort">
             <b-select placeholder="" expanded v-model="ort" @input="ortChange($event)">
               <option v-for="ort in listOrt" v-bind:key="ort">
                 {{ ort }}
@@ -22,18 +58,14 @@
           </b-field>
         </div>
       </div>
-
-      <b-field
-          label="Bad">
+      <b-field label="Bad">
         <b-select placeholder="" expanded v-model="bad" @input="badChange($event)">
           <option v-for="bad in listBad" v-bind:key="bad">
             {{ bad }}
           </option>
         </b-select>
       </b-field>
-
-      <b-field
-          label="Becken">
+      <b-field label="Becken">
         <b-select placeholder="" expanded v-model="becken" @input="beckenChange($event)">
           <option v-for="becken in listBecken" v-bind:key="becken">
             {{ becken }}
@@ -41,6 +73,7 @@
         </b-select>
       </b-field>
     </article>
+  </b-collapse>
 </template>
 
 <script>
@@ -56,30 +89,25 @@ export default {
     }
   },
   props: {
-    all_current: Array
+    all_current: Array,
+    isOpen: Boolean
   },
   methods: {
     // onchange, onclick ...
     kantonChange: function () {
-      if (this.ort && !this.listOrt.includes(this.ort)) {
-        console.log("ungültiger Ort");
-        this.ort = undefined;
-      }
-      this.beckenChange()
+      this.ort = undefined;
+      this.bad = undefined;
+      this.becken = undefined;
+      this.beckenChange();
     },
     ortChange: function () {
-      if (this.bad && !this.listBad.includes(this.bad)) {
-        console.log("ungültiges Bad");
-        this.bad = undefined;
-      }
-      this.beckenChange()
+      this.bad = undefined;
+      this.becken = undefined;
+      this.beckenChange();
     },
     badChange: function () {
-      if (this.becken && !this.listBecken.includes(this.becken)) {
-        console.log("ungültiges Becken");
-        this.becken = undefined;
-      }
-      this.beckenChange()
+      this.becken = undefined;
+      this.beckenChange();
     },
     beckenChange: function () {
       let newArray = this.all_current.filter(item => (
@@ -100,6 +128,7 @@ export default {
         this.$emit('updateBecken', newArray[0]) // handle data and give it back to parent by interface
       } else {
         this.$emit('updateBecken', {
+          ort: "",
           bad: "kein Bad ausgewählt",
           becken: "kein Becken ausgewählt",
           temp: 0,
@@ -165,5 +194,11 @@ export default {
 }
 /deep/ .label {
   color: #fff !important;
+}
+#select-small {
+  min-height: calc(100vh - 177px);
+}
+.fillHeight {
+  min-height: calc(100vh - 177px);
 }
 </style>

@@ -1,58 +1,46 @@
 <template>
-  <div class="tile is-child is-vertical">
-    <article id="title" class="tile is-child notification is-primary is-flex">
-      <div>
-        <p class="title">{{ bad }}</p>
-        <p class="subtitle">{{ becken }}</p>
-      </div>
-
-      <button
-          class="button is-medium is-warning"
-          @click="isOpen = !isOpen"
-          aria-controls="contentIdForA11y1">
-        <b-icon
-            pack="fas"
-            icon="angle-down"
-            size="is-small"
-            v-if="!isOpen">
-        </b-icon>
-        <b-icon
-            pack="fas"
-            icon="angle-up"
-            size="is-small"
-            v-if="isOpen">
-        </b-icon>
-        <!--b-icon
-            pack="fas"
-            icon="angle-down"
-            size="is-medium">
-        </b-icon>
-        <b-icon
-            pack="fas"
-            icon="cog"
-            size="is-small">
-        </b-icon-->
-      </button>
-    </article>
-    <b-collapse :open="false" animation="slide" aria-id="contentIdForA11y1" v-model="isOpen">
-      <article class="tile is-child notification is-warning">
-        <p class="title">{{ temp }}&deg;</p>
-        <p class="subtitle">Test: {{ test }}&deg;</p>
-        <b-field label="Test-Wert">
-          <b-input v-model.number="myTest" type="number" step="0.1" aria-label="Test-Wert"></b-input>
-        </b-field>
-        <b-field label="Slider">
-          <b-slider v-model="myTest" :min="-10" :max="40" :step="0.1" @input="myTestChange($event)" aria-label="slider"></b-slider>
-        </b-field>
-        <b-checkbox v-model="myCheckbox"  @change.native="myCheckboxChange($event)">
-          Test-Wert verwenden
-        </b-checkbox>
+  <b-collapse :open="true" animation="slide" >
+    <div class="tile is-child is-vertical">
+      <article id="title" class="tile is-child notification is-primary is-flex">
+        <div>
+          <p class="title">{{ titel }}</p>
+          <p class="subtitle">{{ becken }}</p>
+        </div>
+        <button
+            class="button is-medium is-warning is-hidden-tablet"
+            @click="isOpenChange()"
+            aria-controls="contentIdForA11y1">
+          <b-icon
+              pack="fas"
+              icon="angle-down"
+              size="is-small"
+              v-if="!isOpen">
+          </b-icon>
+          <b-icon
+              pack="fas"
+              icon="angle-up"
+              size="is-small"
+              v-if="isOpen">
+          </b-icon>
+        </button>
       </article>
-    </b-collapse>
-
-
-  </div>
-
+      <b-collapse animation="slide" v-model="isTest">
+        <article class="tile is-child notification is-warning">
+          <p class="title">{{ temp }}&deg;</p>
+          <p class="subtitle">Test: {{ test }}&deg;</p>
+          <b-field label="Test-Wert">
+            <b-input v-model.number="myTest" type="number" step="0.1" aria-label="Test-Wert"></b-input>
+          </b-field>
+          <b-field label="Slider">
+            <b-slider v-model="myTest" :min="-10" :max="40" :step="0.1" @input="myTestChange($event)" aria-label="slider"></b-slider>
+          </b-field>
+          <b-checkbox v-model="myCheckbox"  @change.native="myCheckboxChange($event)">
+            Test-Wert verwenden
+          </b-checkbox>
+        </article>
+      </b-collapse>
+    </div>
+  </b-collapse>
 
 </template>
 
@@ -63,15 +51,26 @@ export default {
       return {
         myCheckbox: Boolean,
         myTest: Number,
-        isOpen: true
+        isTest: false
       }
     },
     props: {
+      ort: String,
       bad: String,
       becken: String,
       temp: Number,
       test: Number,
-      checkbox: Boolean
+      checkbox: Boolean,
+      isOpen: Boolean
+    },
+    computed: {
+      titel() {
+        if (this.bad.includes(this.ort)) {
+          return (this.bad);
+        } else {
+          return (this.bad + " " + this.ort);
+        }
+      }
     },
     methods: {
       // maybe onchagne may onclick whatever..
@@ -79,7 +78,10 @@ export default {
         this.$emit('updateCheckbox', this.myCheckbox) // handle data and give it back to parent by interface
       },
       myTestChange: function () {
-        this.$emit('updateTest', this.myTest) // handle data and give it back to parent by interface
+        this.$emit('updateTest', this.myTest)
+      },
+      isOpenChange: function () {
+        this.$emit('updateIsOpen', !(this.isOpen))
       }
     },
     beforeMount () {

@@ -2,7 +2,15 @@
   <div class="tile is-parent is-4">
       <article class="tile is-child notification is-info">
           <p class="title">{{term}}&deg;</p>
-          <p class="subtitle">{{datum_string}}</p>
+          <p class="subtitle">
+            <b-icon
+              pack="fas"
+              icon="history"
+              size="is-small"
+              v-if="datum_old">
+            </b-icon>
+            {{datum_string}}
+          </p>
           <figure class="image">
               <svg id="term" viewBox="0 0 75 250">
                   <rect x="18.7" :y="term_top" rx="5" ry="5" width="13" :height="term_height"
@@ -127,6 +135,13 @@ export default {
         } else {
           return this.datum;
         }
+      },
+      datum_old() {
+        if (new Date(Date.parse(this.datum)) !== "Invalid Date" && !isNaN(new Date(Date.parse(this.datum)))) {
+          return (Math.abs(new Date(Date.parse(this.datum)) - new Date()) / 36e5) >= 24;
+        } else {
+          return false;
+        }
       }
     }
 }
@@ -135,16 +150,28 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     #term {
-      height: 80vh;
+      max-height: calc(100vh - 200px);
       fill: none;
       stroke: white;
       stroke-width: 3.8;
       stroke-linejoin: round;
       stroke-linecap: round;
       max-width: 100%;
+      flex-grow: 1;
     }
-    .small { font: bold 13px sans-serif; fill: white; stroke: none }
+    .image {
+      display: flex;
+    }
+    .small {
+      font: bold 13px sans-serif;
+      fill: white;
+      stroke: none;
+    }
     .is-info {
-        background-color: #3F51B5 !important;
+      background-color: #3F51B5 !important;
+    }
+    .is-child {
+      display: flex;
+      flex-direction: column;
     }
 </style>

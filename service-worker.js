@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.9849fb3a21df11dbbe578074535ae22c.js"
+  "precache-manifest.96cd4b984dec6510e685875fe5ceb9b7.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "Splash!"});

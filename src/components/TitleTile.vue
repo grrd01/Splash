@@ -9,7 +9,8 @@
         <button
             class="button is-medium is-warning is-hidden-tablet"
             @click="isOpenChange()"
-            aria-controls="contentIdForA11y1">
+            aria-controls="contentIdForA11y1"
+            aria-label="Auswahl anzeigen/ausblenden">
           <b-icon
               pack="fas"
               icon="angle-down"
@@ -100,23 +101,23 @@ export default {
     color: #fff !important;
   }
   .is-warning {
-    background-color: #7986CB !important;
+    background-color: #2B7CD3 !important;
     color: #000 !important;
   }
   .is-primary {
-    background-color: #303F9F !important;
+    background-color: #103F91 !important;
   }
   /deep/ .b-slider.is-primary .b-slider-fill {
-    background: #303F9F!important;
+    background: #103F91!important;
   }
   /deep/ .b-checkbox.checkbox input[type=checkbox] + .check {
     border: 2px solid white;
   }
   /deep/ .b-checkbox.checkbox input[type=checkbox]:active + .check {
-    border: 2px solid #303F9F;
+    border: 2px solid #103F91;
   }
   /deep/ .b-checkbox.checkbox input[type=checkbox]:checked + .check {
-    background: #303F9F url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Cpath style='fill:%23fff' d='M 0.04038059,0.6267767 0.14644661,0.52071068 0.42928932,0.80355339 0.3232233,0.90961941 z M 0.21715729,0.80355339 0.85355339,0.16715729 0.95961941,0.2732233 0.3232233,0.90961941 z'%3E%3C/path%3E%3C/svg%3E") no-repeat center center;
+    background: #103F91 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Cpath style='fill:%23fff' d='M 0.04038059,0.6267767 0.14644661,0.52071068 0.42928932,0.80355339 0.3232233,0.90961941 z M 0.21715729,0.80355339 0.85355339,0.16715729 0.95961941,0.2732233 0.3232233,0.90961941 z'%3E%3C/path%3E%3C/svg%3E") no-repeat center center;
     border-color: white;
   }
   /deep/ .icon {

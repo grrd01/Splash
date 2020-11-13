@@ -168,7 +168,7 @@ export default {
       stroke: none;
     }
     .is-info {
-      background-color: #3F51B5 !important;
+      background-color: #185ABD !important;
     }
     .is-child {
       display: flex;

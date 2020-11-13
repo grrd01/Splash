@@ -1,37 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" style="fill: blue; stroke: none;">
-
-    <rect x="0" y="0" height="200" width="200" fill="#C5CAE9"></rect>
-    <path transform="translate(-50,0),scale(0.8,0.5)" fill="#7986CB" d="M 0 100
-        A 30 30 0 0 1 50 100
-        A 30 30 0 0 0 100 100
-        A 30 30 0 0 1 150 100
-        A 30 30 0 0 0 200 100
-        A 30 30 0 0 1 250 100
-        A 30 30 0 0 0 300 100
-        A 30 30 0 0 1 350 100
-        A 30 30 0 0 0 400 100
-        L 300 300
-        L 0 300
+    <rect x="0" y="0" height="200" width="200" fill="#41A5EE"></rect>
+    <path transform="translate(-40,0),scale(0.8,0.5)" fill="#2B7CD3" d="M 0 65
+        A 25 25 0 0 0 100 65
+        A 25 25 0 0 0 200 65
+        A 25 25 0 0 0 300 65
+        A 25 25 0 0 0 400 65
+        L 400 400
+        L 0 400
         L 0 100"/>
 
-    <path transform="translate(0,50),scale(0.8,0.5)" fill="#3F51B5" d="M 0 100
-        A 30 30 0 0 1 50 100
-        A 30 30 0 0 0 100 100
-        A 30 30 0 0 1 150 100
-        A 30 30 0 0 0 200 100
-        A 30 30 0 0 1 250 100
-        A 30 30 0 0 0 300 100
-        L 300 300
-        L 0 300
+    <path transform="translate(-60,50),scale(0.8,0.5)" fill="#185ABD" d="M 0 65
+        A 25 25 0 0 0 100 65
+        A 25 25 0 0 0 200 65
+        A 25 25 0 0 0 300 65
+        A 25 25 0 0 0 400 65
+        L 400 400
+        L 0 400
         L 0 100"/>
-    <path transform="translate(-20,100),scale(0.8,0.5)" fill="#303F9F" d="M 0 100
-        A 30 30 0 0 1 50 100
-        A 30 30 0 0 0 100 100
-        A 30 30 0 0 1 150 100
-        A 30 30 0 0 0 200 100
-        A 30 30 0 0 1 250 100
-        A 30 30 0 0 0 300 100
-        L 300 300
-        L 0 300
+    <path transform="translate(-80,100),scale(0.8,0.5)" fill="#103F91" d="M 0 65
+        A 25 25 0 0 0 100 65
+        A 25 25 0 0 0 200 65
+        A 25 25 0 0 0 300 65
+        A 25 25 0 0 0 400 65
+        L 400 400
+        L 0 400
         L 0 100"/>
 </svg>

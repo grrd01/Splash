@@ -40,8 +40,8 @@
     <article id="select-big" class="tile is-child notification is-warning ">
       <div class="columns mb-0">
         <div class="column is-narrow">
-          <b-field label="Kanton">
-            <b-select placeholder="" expanded v-model="kanton" @input="kantonChange($event)">
+          <b-field label-for="Kanton" label="Kanton">
+            <b-select id="Kanton" placeholder="" expanded v-model="kanton" @input="kantonChange($event)">
               <option v-for="kanton in listKanton" v-bind:key="kanton">
                 {{ kanton }}
               </option>
@@ -49,8 +49,8 @@
           </b-field>
         </div>
         <div class="column">
-          <b-field label="Ort">
-            <b-select placeholder="" expanded v-model="ort" @input="ortChange($event)">
+          <b-field label-for="Ort" label="Ort">
+            <b-select id="Ort" placeholder="" expanded v-model="ort" @input="ortChange($event)">
               <option v-for="ort in listOrt" v-bind:key="ort">
                 {{ ort }}
               </option>
@@ -58,15 +58,15 @@
           </b-field>
         </div>
       </div>
-      <b-field label="Bad">
-        <b-select placeholder="" expanded v-model="bad" @input="badChange($event)">
+      <b-field label-for="Bad" label="Bad">
+        <b-select id="Bad" placeholder="" expanded v-model="bad" @input="badChange($event)">
           <option v-for="bad in listBad" v-bind:key="bad">
             {{ bad }}
           </option>
         </b-select>
       </b-field>
-      <b-field label="Becken">
-        <b-select placeholder="" expanded v-model="becken" @input="beckenChange($event)">
+      <b-field label-for="Becken" label="Becken">
+        <b-select id="Becken" placeholder="" expanded v-model="becken" @input="beckenChange($event)">
           <option v-for="becken in listBecken" v-bind:key="becken">
             {{ becken }}
           </option>
@@ -189,7 +189,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .is-warning {
-  background-color: #7986CB !important;
+  background-color: #2B7CD3 !important;
   color: #fff !important;
 }
 /deep/ .label {

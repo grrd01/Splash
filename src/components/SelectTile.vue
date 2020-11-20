@@ -92,6 +92,12 @@ export default {
     all_current: Array,
     isOpen: Boolean
   },
+  watch: {
+    all_current: function(newVal, oldVal) {
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal);
+      this.beckenChange();
+    }
+  },
   methods: {
     // onchange, onclick ...
     kantonChange: function () {
@@ -181,6 +187,7 @@ export default {
     }
     if (localStorage.becken) {
       this.becken = localStorage.becken;
+      this.beckenChange();
     }
   }
 }
